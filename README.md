@@ -1,0 +1,2 @@
+# embedded
+smart home ish
