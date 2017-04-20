@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -31,7 +30,6 @@ int main(int argc, char* argv[]){
                 cmd[3] = '0';
                 cmd[4] = '0';
         }
-
         else if (*argv[1] == '0') {
                 //turn lights off
                 cmd[0] = '0';
@@ -45,10 +43,10 @@ int main(int argc, char* argv[]){
                 //use argv[2] and argv[3] to set hour
                 //use argv[4] and argv[5] to set minute
                 cmd[0] = 'a';
-                cmd[1] = *argv[2];
-                cmd[2] = *argv[3];
-                cmd[3] = *argv[4];
-                cmd[4] = *argv[5];
+                cmd[1] = argv[2][0];
+                cmd[2] = argv[2][1];
+                cmd[3] = argv[2][3];
+                cmd[4] = argv[2][4];
         }
         else if(*argv[1] == 'd'){
                 //update status file with info that puts IOT.c into
@@ -96,4 +94,4 @@ int main(int argc, char* argv[]){
 
         return 0;
 }
-         
+                                       
