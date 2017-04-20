@@ -27,6 +27,11 @@
             <center>
                 <input type="submit" value="ON" name="on">
                 <input type="submit" value="OFF" name="off">
+
+                <br>
+                Disable Smart Features Here
+                <br>
+                <input type="submit" value="Disable" name="disable">
             </center>
         </form>
 
@@ -45,16 +50,17 @@
     <?php
          if(isset($_GET['on'])){
              exec("(cd /home/pi; sudo ./webPageHandler 1)");
-           echo "LED is on";
                 }
          else if(isset($_GET['off'])){
                  exec("(cd /home/pi; sudo ./webPageHandler 0)");
-                 echo "LED is off";
          }
          else if(isset($_POST['submit'])){
-                 exec("(cd /home/pi; sudo ./webPageHandler $timeVar)");
-        echo $timeVar;
+                 exec("(cd /home/pi; sudo ./webPageHandler a $timeVar)");
         }
+         else if(isset($_GET['disable'])){
+                 exec("(cd /home/pi; sudo ./webPageHandler d)");
+         }
+
          ?>
     </body>
 </html>
