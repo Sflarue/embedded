@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title> Alarm Clock</title>
+        <?php
+                $timeVar = $_POST['usr_time'];
+        ?>
+</head>
+
+    <script>
+        window.onload = function () {
+            document.getElementById('more').onclick = function () {
+                if (this.checked)
+                    document.getElementById('smart').style.display = 'block';
+                else
+                    document.getElementById('smart').style.display = 'none';
+            }
+        }
+    </script>
+
+    <body>
+        <center>LED Control:
+        <br><br>
+        <form>
+            <center>
+                <input type="submit" value="ON" name="on">
+                <input type="submit" value="OFF" name="off">
+            </center>
+        </form>
+
+        <br>
+            <input id="more" type="checkbox">Enable Smart Features
+             <br><br>
+
+             <div id="smart" style="display: none" css>
+                <form method="post">
+                    Alarm Time:<br>
+                    <input type="time" name="usr_time">
+                    <input type="submit" value="Submit" name="submit">
+                </form>
+
+             </div>
+    <?php
+         if(isset($_GET['on'])){
+             exec("(cd /home/pi; sudo ./webPageHandler 1)");
+           echo "LED is on";
+                }
+         else if(isset($_GET['off'])){
+                 exec("(cd /home/pi; sudo ./webPageHandler 0)");
+                 echo "LED is off";
+         }
+         else if(isset($_POST['submit'])){
+                 exec("(cd /home/pi; sudo ./webPageHandler $timeVar)");
+        echo $timeVar;
+        }
+         ?>
+    </body>
+</html>
